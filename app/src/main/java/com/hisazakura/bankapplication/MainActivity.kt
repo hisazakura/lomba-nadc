@@ -3,7 +3,6 @@ package com.hisazakura.bankapplication
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,7 +10,11 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.hisazakura.bankapplication.databinding.ActivityMainBinding
+
+// Activity untuk melihat saldo dan riwayat pemasukan/pengeluaran
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,11 +33,25 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        // Fungsi yang dijalankan ketika tombol fab ditekan (lihat activity_main.xml)
         binding.fab.setOnClickListener {
-            gotoActivity(AddEntry())
+            gotoActivity(AddEntryActivity())
         }
+
+        // Data untuk testing
+        val listentry = listOf<EntryData>(
+            EntryData("Makan", 10f),
+            EntryData("Minum", 2f)
+        )
+
+        // Inisialisasi RecyclerView
+        val entryRecyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        entryRecyclerView.layoutManager = LinearLayoutManager(this)
+        val entry_adapter = EntryAdapter(listentry)
+        entryRecyclerView.adapter = entry_adapter
     }
 
+    // Fungsi pindah Activity
     fun gotoActivity(activity: Activity){
         intent = Intent(this,activity::class.java)
         startActivity(intent)
