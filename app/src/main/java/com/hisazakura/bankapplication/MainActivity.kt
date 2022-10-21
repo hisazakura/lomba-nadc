@@ -13,6 +13,7 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hisazakura.bankapplication.databinding.ActivityMainBinding
+import com.hisazakura.bankapplication.model.EntryData
 
 // Activity untuk melihat saldo dan riwayat pemasukan/pengeluaran
 

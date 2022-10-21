@@ -3,11 +3,9 @@ package com.hisazakura.bankapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
-import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import com.hisazakura.bankapplication.model.EntryData
 
 // Kelas-kelas untuk inisialisasi RecyclerView
 
